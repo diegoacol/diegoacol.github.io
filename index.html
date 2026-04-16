@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mamãe no Comando | Hub Oficial</title>
+
+    <!-- Modern Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-deep: #070B14;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --primary-gold: #F59E0B;
+            --primary-orange: #EA580C;
+            --gradient-gold: linear-gradient(135deg, #FCD34D, #F59E0B);
+            --gradient-btn: linear-gradient(135deg, #F59E0B, #EA580C);
+            --text-main: #F1F5F9;
+            --text-muted: #94A3B8;
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --shadow-glow: 0 0 40px rgba(245, 158, 11, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 4rem 1.5rem;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at top right, rgba(245, 158, 11, 0.05) 0%, transparent 40%),
+                              radial-gradient(circle at bottom left, rgba(234, 88, 12, 0.05) 0%, transparent 40%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            text-align: center;
+        }
+
+        header {
+            margin-bottom: 4rem;
+        }
+
+        .logo-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* Hub Items */
+        .hub-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        .hub-item {
+            display: flex;
+            align-items: center;
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hub-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: var(--shadow-glow);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .hub-item.primary {
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            background: rgba(245, 158, 11, 0.03);
+        }
+
+        .hub-item.primary:hover {
+            border-color: var(--primary-gold);
+        }
+
+        .hub-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            font-size: 1.8rem;
+            color: var(--primary-gold);
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .hub-item:hover .hub-icon {
+            transform: rotate(-5deg) scale(1.1);
+            color: #fff;
+            background: var(--gradient-btn);
+        }
+
+        .hub-content {
+            text-align: left;
+        }
+
+        .hub-content h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .hub-content p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .badge-new {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gradient-btn);
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 0.2rem 0.8rem;
+            border-radius: 50px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        /* Coming Soon style */
+        .hub-item.soon {
+            opacity: 0.6;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .hub-item.soon .hub-icon {
+            filter: grayscale(1);
+        }
+
+        /* Social links */
+        .socials {
+            margin-top: 4rem;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .social-link {
+            color: var(--text-muted);
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--primary-gold);
+            transform: translateY(-3px);
+        }
+
+        footer {
+            margin-top: auto;
+            padding-top: 4rem;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate {
+            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+
+        @media (max-width: 480px) {
+            .logo-text { font-size: 2rem; }
+            .hub-item { padding: 1.25rem; }
+            .hub-icon { width: 50px; height: 50px; font-size: 1.5rem; margin-right: 1.2rem; }
+            .hub-content h3 { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header class="animate">
+            <h1 class="logo-text">Mamãe no Comando</h1>
+            <p class="tagline">Soluções para uma maternidade leve</p>
+        </header>
+
+        <div class="hub-grid">
+            <!-- Produto 1: Código do Sono -->
+            <a href="./codigodosono" class="hub-item primary animate delay-1">
+                <span class="badge-new">Destaque</span>
+                <div class="hub-icon">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="hub-content">
+                    <h3>O Código do Sono</h3>
+                    <p>Faça seu bebê dormir a noite toda com o método comprovado.</p>
+                </div>
+            </a>
+
+            <!-- Placeholder 1 -->
+            <div class="hub-item soon animate delay-2">
+                <div class="hub-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <div class="hub-content">
+                    <h3>Introdução Alimentar</h3>
+                    <p>Em breve: Guia completo para uma alimentação saudável.</p>
+                </div>
+            </div>
+
+            <!-- Placeholder 2 -->
+            <div class="hub-item soon animate delay-3">
+                <div class="hub-icon">
+                    <i class="fas fa-shield-heart"></i>
+                </div>
+                <div class="hub-content">
+                    <h3>Desenvolvimento Infantil</h3>
+                    <p>Em breve: Atividades e estímulos para cada fase.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="socials animate delay-3" style="animation-delay: 0.8s;">
+            <a href="https://instagram.com/mamaenocomando" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+        </div>
+
+        <footer class="animate delay-3" style="animation-delay: 1s;">
+            &copy; 2024 Mamãe no Comando. Todos os direitos reservados.
+        </footer>
+    </div>
+
+</body>
+
+</html>
